@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You – BH Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --green-dark:#3d5a3e;
+    --green-mid:#4a6741;
+    --cream:#f5f2ed;
+    --charcoal:#2c2c2c;
+    --warm-gray:#6b6560;
+    --border:#c8c0b8;
+  }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Raleway',sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:24px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .logo-link {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .logo-box {
+    width:40px; height:40px;
+    border:2px solid var(--green-dark);
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .logo-box span {
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px; font-weight:300; color:var(--green-dark); letter-spacing:1px;
+  }
+
+  .logo-text {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase; color:var(--charcoal);
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  main {
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:60px 24px;
+  }
+
+  .thank-you-card {
+    background:#fff;
+    max-width:640px;
+    width:100%;
+    padding:64px 48px;
+    text-align:center;
+    box-shadow:0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .success-icon {
+    width:72px;
+    height:72px;
+    margin:0 auto 32px;
+    background:var(--green-dark);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .success-icon svg {
+    width:40px;
+    height:40px;
+    stroke:#fff;
+    fill:none;
+    stroke-width:3;
+  }
+
+  .thank-you-card h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(36px,5vw,48px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:16px;
+    color:var(--charcoal);
+  }
+
+  .thank-you-card .subtitle {
+    font-size:15px;
+    line-height:1.8;
+    color:var(--warm-gray);
+    font-weight:300;
+    margin-bottom:40px;
+  }
+
+  .download-section {
+    background:var(--cream);
+    padding:36px 32px;
+    margin-bottom:32px;
+  }
+
+  .download-section h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;
+    font-weight:400;
+    letter-spacing:1px;
+    margin-bottom:12px;
+    color:var(--charcoal);
+  }
+
+  .download-section p {
+    font-size:13px;
+    color:var(--warm-gray);
+    margin-bottom:24px;
+  }
+
+  .btn-download {
+    display:inline-block;
+    background:var(--green-dark);
+    color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:18px 44px;
+    text-decoration:none;
+    transition:background 0.3s;
+    cursor:pointer;
+  }
+
+  .btn-download:hover {
+    background:var(--green-mid);
+  }
+
+  .next-steps {
+    border-top:1px solid var(--border);
+    padding-top:32px;
+  }
+
+  .next-steps h3 {
+    font-family:'Raleway',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+    color:var(--charcoal);
+  }
+
+  .next-steps ul {
+    list-style:none;
+    text-align:left;
+    max-width:420px;
+    margin:0 auto;
+  }
+
+  .next-steps li {
+    font-size:14px;
+    color:var(--warm-gray);
+    padding:10px 0;
+    border-bottom:1px solid #f0ede8;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .next-steps li::before {
+    content:'→';
+    color:var(--green-dark);
+    font-weight:700;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  .support-note {
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid var(--border);
+    font-size:13px;
+    color:var(--warm-gray);
+    font-style:italic;
+  }
+
+  .support-note a {
+    color:var(--green-dark);
+    text-decoration:underline;
+  }
+
+  .btn-home {
+    display:inline-block;
+    margin-top:32px;
+    color:var(--warm-gray);
+    font-size:12px;
+    font-weight:400;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    text-decoration:none;
+    transition:color 0.3s;
+  }
+
+  .btn-home:hover {
+    color:var(--green-dark);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:28px 24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--warm-gray);
+    letter-spacing:1px;
+  }
+
+  footer a {
+    color:var(--warm-gray);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:640px) {
+    .thank-you-card {
+      padding:48px 32px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="../index.html" class="logo-link">
+    <div class="logo-box"><span>BH</span></div>
+    <div class="logo-text">BH Performance</div>
+  </a>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <div class="thank-you-card">
+    
+    <!-- Success Icon -->
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <!-- Headline -->
+    <h1>You're All Set</h1>
+    <p class="subtitle">Your program is ready. Download it below and let's get started on your transformation.</p>
+
+    <!-- Download Section -->
+    <div class="download-section">
+      <h2>Download Your Program</h2>
+      <p>Click below to download your program as a PDF. Save it to your device so you can reference it anytime.</p>
+      <a href="#" class="btn-download" id="downloadBtn">Download Program PDF →</a>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="next-steps">
+      <h3>What Happens Next</h3>
+      <ul>
+        <li>Check your email for your receipt and program access link</li>
+        <li>Download and review your program guide</li>
+        <li>Set your start date and block time on your calendar</li>
+        <li>Join our private community for support and accountability</li>
+      </ul>
+    </div>
+
+    <!-- Support Note -->
+    <div class="support-note">
+      Questions? Email us at <a href="mailto:support@bhperformance.com">support@bhperformance.com</a> — we're here to help.
+    </div>
+
+    <!-- Back to Home -->
+    <a href="../index.html" class="btn-home">← Back to Home</a>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>©2026 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
+
+<!-- DOWNLOAD SCRIPT -->
+<script>
+// Get program ID from URL (Stripe will pass this after successful payment)
+const urlParams = new URLSearchParams(window.location.search);
+const programId = urlParams.get('program') || 'desk-warrior'; // default fallback
+
+// Map program IDs to actual PDF file names
+const programFiles = {
+  'desk-warrior': 'desk-warrior.pdf',
+  'busy-dad': 'busy-dad.pdf',
+  'tech-wellness': 'tech-wellness.pdf',
+  'runners-knee': 'runners-knee.pdf',
+  'morning-reset': 'morning-reset.pdf',
+  'posture-fix': 'posture-fix.pdf'
+};
+
+// Download button handler
+document.getElementById('downloadBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  
+  const fileName = programFiles[programId];
+  
+  if (!fileName) {
+    alert('Program not found. Please contact support.');
+    return;
+  }
+
+  // Create a temporary download link
+  const link = document.createElement('a');
+  link.href = `/downloads/${fileName}`;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Optional: Track the download
+  console.log(`Downloaded: ${fileName}`);
+});
+</script>
+
+</body>
+</html>

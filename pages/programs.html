@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Programs – BH Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --green-dark:#3d5a3e;
+    --green-mid:#4a6741;
+    --cream:#f5f2ed;
+    --charcoal:#2c2c2c;
+    --warm-gray:#6b6560;
+    --border:#c8c0b8;
+  }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Raleway',sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:24px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+
+  .logo-link {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .logo-box {
+    width:40px; height:40px;
+    border:2px solid var(--green-dark);
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .logo-box span {
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px; font-weight:300; color:var(--green-dark); letter-spacing:1px;
+  }
+
+  .logo-text {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase; color:var(--charcoal);
+  }
+
+  .back-link {
+    font-family:'Raleway',sans-serif;
+    font-size:12px; font-weight:400; letter-spacing:2px;
+    text-transform:uppercase; color:var(--warm-gray);
+    text-decoration:none;
+    transition:color 0.3s;
+  }
+
+  .back-link:hover { color:var(--green-dark); }
+
+  /* ─── HERO ─── */
+  .programs-hero {
+    background:#fff;
+    padding:80px 24px 60px;
+    text-align:center;
+  }
+
+  .programs-hero .label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--green-dark); font-weight:500; margin-bottom:18px;
+  }
+
+  .programs-hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(42px,6vw,64px); font-weight:300;
+    text-transform:uppercase; letter-spacing:3px;
+    margin-bottom:20px; color:var(--charcoal);
+  }
+
+  .programs-hero p {
+    font-size:15px; line-height:1.85; color:var(--warm-gray);
+    font-weight:300; max-width:640px; margin:0 auto;
+  }
+
+  /* ─── PROGRAMS GRID ─── */
+  .programs-section {
+    padding:60px 24px 100px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .programs-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+    gap:40px;
+  }
+
+  .program-card {
+    background:#fff;
+    border:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    transition:box-shadow 0.3s, transform 0.3s;
+  }
+
+  .program-card:hover {
+    box-shadow:0 12px 40px rgba(0,0,0,0.08);
+    transform:translateY(-4px);
+  }
+
+  .program-image {
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    background:linear-gradient(160deg,#3d5a3e 0%,#2c3e2d 100%);
+  }
+
+  .program-body {
+    padding:36px 32px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .program-category {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--green-dark); font-weight:500; margin-bottom:12px;
+  }
+
+  .program-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px; font-weight:400; letter-spacing:1px;
+    margin-bottom:14px; color:var(--charcoal);
+  }
+
+  .program-desc {
+    font-size:14px; line-height:1.8; color:var(--warm-gray);
+    font-weight:300; margin-bottom:20px; flex:1;
+  }
+
+  .program-features {
+    list-style:none;
+    margin-bottom:24px;
+  }
+
+  .program-features li {
+    font-size:13px; color:var(--warm-gray);
+    padding:6px 0;
+    border-bottom:1px solid #f0ede8;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .program-features li::before {
+    content:'✓';
+    color:var(--green-dark);
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  .program-footer {
+    border-top:1px solid var(--border);
+    padding:24px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .program-price {
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    font-weight:400;
+    color:var(--charcoal);
+  }
+
+  .program-price-label {
+    display:block;
+    font-family:'Raleway',sans-serif;
+    font-size:11px;
+    font-weight:300;
+    color:var(--warm-gray);
+    letter-spacing:1px;
+    margin-top:2px;
+  }
+
+  .btn-buy {
+    background:var(--green-dark);
+    color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:16px 32px;
+    border:none;
+    cursor:pointer;
+    transition:background 0.3s;
+  }
+
+  .btn-buy:hover {
+    background:var(--green-mid);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:36px 24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--warm-gray);
+    letter-spacing:1px;
+  }
+
+  footer a {
+    color:var(--warm-gray);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:768px) {
+    .programs-grid {
+      grid-template-columns:1fr;
+      max-width:480px;
+      margin:0 auto;
+    }
+
+    .program-footer {
+      flex-direction:column;
+      gap:16px;
+      text-align:center;
+    }
+
+    .btn-buy {
+      width:100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="../index.html" class="logo-link">
+    <div class="logo-box"><span>BH</span></div>
+    <div class="logo-text">BH Performance</div>
+  </a>
+  <a href="../index.html" class="back-link">← Back to Home</a>
+</header>
+
+<!-- HERO -->
+<section class="programs-hero">
+  <div class="label">Programs</div>
+  <h1>Find Your Program</h1>
+  <p>Each program is tailored to specific goals and lifestyles. Pick the one that fits where you are and where you want to be.</p>
+</section>
+
+<!-- PROGRAMS GRID -->
+<section class="programs-section">
+  <div class="programs-grid">
+
+    <!-- Program 1: Desk Warrior -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1593177232526-718e04eddaa1?w=600&q=70" alt="Desk Warrior" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Desk Workers</div>
+        <h2 class="program-title">Desk Warrior: 12-Week Back Pain Fix</h2>
+        <p class="program-desc">Fix chronic back pain from sitting 8+ hours. Progressive mobility, strength, and posture correction built for office and remote workers.</p>
+        <ul class="program-features">
+          <li>36-page guided workout plan</li>
+          <li>Weekly posture correction guides</li>
+          <li>Anti-inflammation nutrition guide</li>
+          <li>Progress tracking sheets</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$297</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="desk-warrior">Buy Now →</button>
+      </div>
+    </div>
+
+    <!-- Program 2: Busy Dad -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1552058264-315e568980d4?w=600&q=70" alt="Busy Dad" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Busy Professionals</div>
+        <h2 class="program-title">Busy Dad Body Recomp</h2>
+        <p class="program-desc">20-minute at-home workouts for dads with zero free time. No gym. No excuses. Real results that fit your life.</p>
+        <ul class="program-features">
+          <li>24 at-home workout plans</li>
+          <li>Simple meal prep guide</li>
+          <li>Weekend batch cooking plans</li>
+          <li>Accountability tracker</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$197</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="busy-dad">Buy Now →</button>
+      </div>
+    </div>
+
+    <!-- Program 3: Tech Wellness -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=70" alt="Tech Wellness" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Tech Workers</div>
+        <h2 class="program-title">Tech Industry Wellness Reset</h2>
+        <p class="program-desc">Built for devs and remote workers. Fixes posture, boosts energy, and undoes the damage of 12-hour coding marathons.</p>
+        <ul class="program-features">
+          <li>48 progressive workout plans</li>
+          <li>Eye strain & wrist recovery drills</li>
+          <li>Sleep optimization guide</li>
+          <li>Stress management toolkit</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$497</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="tech-wellness">Buy Now →</button>
+      </div>
+    </div>
+
+    <!-- Program 4: Runner's Knee -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70" alt="Runner's Knee" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Injury Prevention</div>
+        <h2 class="program-title">Runner's Knee Recovery Program</h2>
+        <p class="program-desc">Eliminate knee pain and get back to running. A rehab-focused program built around prehab principles, not just rest.</p>
+        <ul class="program-features">
+          <li>18 targeted recovery workouts</li>
+          <li>Knee stability drill guide</li>
+          <li>Gait analysis checklist</li>
+          <li>Return-to-running protocol</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$147</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="runners-knee">Buy Now →</button>
+      </div>
+    </div>
+
+    <!-- Program 5: Morning Reset -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1506878206813-92eb64d6e4fb?w=600&q=70" alt="Morning Reset" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Daily Routines</div>
+        <h2 class="program-title">The 20-Min Morning Reset</h2>
+        <p class="program-desc">Start every day with energy and momentum. A simple repeatable morning routine that takes less than 20 minutes.</p>
+        <ul class="program-features">
+          <li>28 morning session plans</li>
+          <li>Breathing & mobility warm-ups</li>
+          <li>Mental clarity techniques</li>
+          <li>Habit-building tracker</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$97</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="morning-reset">Buy Now →</button>
+      </div>
+    </div>
+
+    <!-- Program 6: Posture Fix -->
+    <div class="program-card">
+      <img src="https://images.unsplash.com/photo-1571945727116-59eaa4e8304d?w=600&q=70" alt="Posture Fix" class="program-image"/>
+      <div class="program-body">
+        <div class="program-category">Desk Workers</div>
+        <h2 class="program-title">Total Posture Overhaul</h2>
+        <p class="program-desc">Fix rounded shoulders, forward head posture, and tight hips. A full-body correction system for anyone who sits for a living.</p>
+        <ul class="program-features">
+          <li>32 posture correction workouts</li>
+          <li>Daily 5-min desk reset guides</li>
+          <li>Thoracic spine mobility drills</li>
+          <li>Before/after tracking sheets</li>
+        </ul>
+      </div>
+      <div class="program-footer">
+        <div>
+          <div class="program-price">$197</div>
+          <span class="program-price-label">one-time payment</span>
+        </div>
+        <button class="btn-buy" data-program="posture-fix">Buy Now →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>©2026 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
+
+<!-- STRIPE PLACEHOLDER (we'll wire this next) -->
+<script>
+// Stripe will go here
+document.querySelectorAll('.btn-buy').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const programId = this.dataset.program;
+    alert(`Stripe checkout for: ${programId}\n\nWe'll wire this up next!`);
+  });
+});
+</script>
+
+</body>
+</html>
