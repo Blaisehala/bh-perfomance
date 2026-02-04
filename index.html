@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BH Performance – Blaise Hala</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --green-dark:#3d5a3e;
+    --green-mid:#4a6741;
+    --cream:#f5f2ed;
+    --charcoal:#2c2c2c;
+    --warm-gray:#6b6560;
+    --border:#c8c0b8;
+  }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Raleway',sans-serif;
+    color:var(--charcoal);
+    background:#1a1a1a;
+    overflow-x:hidden;
+  }
+
+  /* ─── HERO (fixed bg) ─── */
+  .hero {
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+      url('https://images.pexels.com/photos/6388979/pexels-photo-6388979.jpeg') center/cover no-repeat,
+      linear-gradient(145deg,#2c3e2d 0%,#1e2e1f 25%,#2a3828 50%,#1c2d1e 75%,#253324 100%);
+  }
+
+  .hero::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.28) 40%,rgba(0,0,0,0.45) 100%);
+  }
+
+  /* ─── SCROLL WRAP ─── */
+  .scroll-wrap { position:relative; z-index:1; }
+
+  /* ─── HERO CONTENT ─── */
+  .hero-content {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    padding:0 24px;
+    position:relative;
+  }
+
+  .logo { position:absolute; top:40px; left:50%; transform:translateX(-50%); text-align:center; }
+
+  .logo-box {
+    width:52px; height:52px;
+    border:2px solid rgba(255,255,255,0.85);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 10px;
+  }
+
+  .logo-box span {
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px; font-weight:300; color:#fff; letter-spacing:2px;
+  }
+
+  .logo-name {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:300; letter-spacing:4px;
+    text-transform:uppercase; color:rgba(255,255,255,0.9);
+  }
+
+  .hero-headline {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(52px,9vw,96px);
+    font-weight:300; line-height:1.05; letter-spacing:3px;
+    text-transform:uppercase;
+    text-shadow:0 2px 24px rgba(0,0,0,0.25);
+    margin-bottom:150px;
+  }
+
+  .btn-outline {
+    display:inline-block;
+    border:1.5px solid rgba(255,255,255,0.85);
+    color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase;
+    padding:18px 44px;
+    background:transparent;
+    transition:background 0.3s;
+    cursor:pointer;
+  }
+
+  .btn-outline:hover { background:rgba(255,255,255,0.12); }
+
+  .scroll-hint {
+    position:absolute; bottom:36px; left:50%;
+    transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:rgba(255,255,255,0.6);
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    animation:nudge 2s ease-in-out infinite;
+  }
+
+  .scroll-hint svg { width:18px; height:18px; stroke:currentColor; fill:none; stroke-width:2; }
+
+  @keyframes nudge {
+    0%,100% { transform:translateX(-50%) translateY(0); }
+    50%     { transform:translateX(-50%) translateY(8px); }
+  }
+
+
+.hero-buttons {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.secondary-btn {
+  border-color: rgba(255,255,255,0.6);
+  opacity:0.85;
+}
+
+.secondary-btn:hover {
+  background:rgba(255,255,255,0.2);
+}
+
+
+
+  /* ─── MEET CARD (creeps up over hero) ─── */
+  .meet-card-wrap {
+    margin-top: -340px;
+     margin-bottom:80px;
+    position:relative;
+    z-index:10;
+    max-width:860px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:0 24px;
+  }
+
+  .meet-card {
+    background:#fff;
+    padding:72px 48px 64px;
+    text-align:center;
+    /* box-shadow:0 10px 60px rgba(0,0,0,0.12); */
+  }
+
+  .meet-photo {
+    width:140px; height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid #fff;
+    box-shadow:0 4px 20px rgba(0,0,0,0.12);
+    margin-bottom:28px;
+    margin-top:-108px;
+  }
+
+  .meet-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px; font-weight:300;
+    letter-spacing:4px; text-transform:uppercase;
+    margin-bottom:8px; color:var(--charcoal);
+  }
+
+  .meet-cred {
+    font-family:'Raleway',sans-serif;
+    font-size:13px; font-weight:300;
+    color:var(--warm-gray); letter-spacing:1px;
+    margin-bottom:28px;
+  }
+
+  .meet-quote {
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:20px; line-height:1.7;
+    color:var(--warm-gray);
+    max-width:580px; margin:0 auto 32px;
+  }
+
+
+
+  .meet-card-wrap,
+.method {
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.meet-card::after {
+  content:"";
+  display:block;
+  width:120px;
+  height:1px;
+  background:#e2e2e2;
+  margin:40px auto 0;
+}
+
+
+.meet-title {
+  font-size:30px;
+}
+.method-text h2 {
+  font-size:46px;
+}
+
+  /* ─── CREAM BODY ─── */
+  .cream-body { 
+    background:#ffffff; 
+  position:relative;
+  z-index:2;
+  }
+
+  .divider { width:100px; height:1px; background:var(--border); margin:48px auto; }
+
+  /* ─── METHOD ─── */
+  .method {
+    padding:80px 24px 100px;
+    max-width:1000px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:64px; align-items:center;
+    margin-top: -40px;
+  }
+
+  .method-img {
+    width:100%; aspect-ratio:3/4;
+    object-fit:cover; border-radius:4px;
+    background:linear-gradient(160deg,#3d5a3e 0%,#2c3e2d 100%);
+  }
+
+  .method-text .label {
+    font-size:11px; letter-spacing:4px;
+    text-transform:uppercase; color:var(--green-dark);
+    font-weight:500; margin-bottom:18px;
+  }
+
+  .method-text h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px; font-weight:300; line-height:1.15;
+    text-transform:uppercase; letter-spacing:2px;
+    margin-bottom:28px; color:var(--charcoal);
+  }
+
+  .method-text p {
+    font-size:15px; line-height:1.9;
+    color:var(--warm-gray); font-weight:300; margin-bottom:16px;
+  }
+
+  /* ─── TESTIMONIAL CTA ─── */
+  .testimonial-cta { padding:60px 24px 90px; text-align:center; }
+  .testimonial-cta .btn-filled { margin-bottom:18px; }
+
+  .no-obligation {
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic; font-size:17px;
+    color:var(--warm-gray); font-weight:300;
+  }
+
+  /* ─── QUOTE BANNER ─── */
+  .quote-banner {
+    position:relative; min-height:380px;
+    background:
+      url('https://images.pexels.com/photos/6388979/pexels-photo-6388979.jpeg') center/cover no-repeat,
+      linear-gradient(135deg,#2a3828 0%,#1e2e1f 50%,#253324 100%);
+    display:flex; align-items:center; justify-content:center;
+    padding:72px 24px;
+  }
+
+  .quote-banner::before {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.38) 0%,rgba(0,0,0,0.48) 50%,rgba(0,0,0,0.38) 100%);
+  }
+
+  .quote-banner-inner { position:relative; z-index:1; max-width:720px; text-align:center; }
+
+  .quote-banner blockquote {
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:clamp(20px,3.2vw,27px);
+    font-weight:300; line-height:1.6;
+    color:#fff; text-shadow:0 2px 12px rgba(0,0,0,0.3);
+    margin-bottom:32px;
+  }
+
+  .quote-attribution { display:flex; flex-direction:column; align-items:center; gap:4px; }
+
+  .quote-name {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500;
+    letter-spacing:4px; text-transform:uppercase;
+    color:rgba(255,255,255,0.92);
+  }
+
+  .quote-dash { color:rgba(255,255,255,0.5); font-size:18px; line-height:1; }
+
+  .quote-location {
+    font-family:'Raleway',sans-serif;
+    font-size:10px; font-weight:300;
+    letter-spacing:3px; text-transform:uppercase;
+    color:rgba(255,255,255,0.7);
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background:#eae7e1; padding:100px 24px; }
+  .services-inner { max-width:1000px; margin:0 auto; text-align:center; }
+
+  .services .label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--green-dark); font-weight:500; margin-bottom:16px;
+  }
+
+  .services h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:40px; font-weight:300;
+    text-transform:uppercase; letter-spacing:2px;
+    margin-bottom:60px; color:var(--charcoal);
+  }
+
+  .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+
+  .card { background:var(--cream); padding:48px 32px; text-align:center; transition:box-shadow 0.3s; }
+  .card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.1); }
+
+  .card-icon { width:48px; height:48px; margin:0 auto 24px; display:flex; align-items:center; justify-content:center; }
+  .card-icon svg { width:36px; height:36px; stroke:var(--green-dark); fill:none; stroke-width:1.5; }
+
+  .card h3 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px; font-weight:600; letter-spacing:1px;
+    margin-bottom:12px; color:var(--charcoal);
+  }
+
+  .card p { font-size:14px; line-height:1.8; color:var(--warm-gray); font-weight:300; }
+
+  /* ─── PARALLAX BANNER ─── */
+  .parallax-banner {
+    height:420px;
+    background:
+      url('https://images.pexels.com/photos/6388979/pexels-photo-6388979.jpeg') center/cover no-repeat,
+      linear-gradient(135deg,#2a3828 0%,#1e2e1f 100%);
+    background-attachment:fixed,scroll;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; color:#fff; position:relative;
+  }
+
+  .parallax-banner::after {
+    content:''; position:absolute; inset:0;
+    background:rgba(0,0,0,0.35);
+  }
+
+  .parallax-banner-inner { position:relative; z-index:1; padding:0 24px; }
+
+  .parallax-banner h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(36px,6vw,58px); font-weight:300;
+    text-transform:uppercase; letter-spacing:3px;
+    margin-bottom:12px; text-shadow:0 2px 16px rgba(0,0,0,0.3);
+  }
+
+  .parallax-banner p {
+    font-size:15px; font-weight:300; opacity:0.85;
+    max-width:540px; margin:0 auto 36px; line-height:1.7;
+  }
+
+  /* ─── FINAL CTA ─── */
+  .cta-wrap { background:var(--cream); }
+
+  .cta-section {
+    padding:100px 24px 80px;
+    text-align:center; max-width:680px; margin:0 auto;
+  }
+
+  .cta-section .label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--green-dark); font-weight:500; margin-bottom:18px;
+  }
+
+  .cta-section h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(34px,5vw,48px); font-weight:300;
+    text-transform:uppercase; letter-spacing:2px;
+    margin-bottom:24px; color:var(--charcoal);
+  }
+
+  .cta-section p {
+    font-size:15px; line-height:1.85;
+    color:var(--warm-gray); font-weight:300; margin-bottom:44px;
+  }
+
+  /* ─── FILLED BUTTON ─── */
+  .btn-filled {
+    display:inline-block;
+    background:var(--green-dark); color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase;
+    padding:20px 52px;
+    border:none; cursor:pointer;
+    transition:background 0.3s;
+  }
+
+  .btn-filled:hover { background:var(--green-mid); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:var(--cream);
+    border-top:1px solid var(--border);
+    padding:36px 24px; text-align:center;
+    font-size:12px; color:var(--warm-gray); letter-spacing:1px;
+  }
+
+  footer a { color:var(--warm-gray); text-decoration:underline; text-underline-offset:3px; }
+
+  /* ─── MODAL ─── */
+  .modal-backdrop {
+    position:fixed; inset:0; z-index:999;
+    background:rgba(0,0,0,0.52);
+    backdrop-filter:blur(3px);
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    opacity:0; pointer-events:none;
+    transition:opacity 0.3s ease;
+  }
+
+  .modal-backdrop.open { opacity:1; pointer-events:auto; }
+
+  .modal {
+    position:relative; width:100%; max-width:520px;
+    border-radius:2px; overflow:hidden;
+    transform:translateY(18px);
+    transition:transform 0.35s cubic-bezier(.22,.68,0,1.2);
+  }
+
+  .modal-backdrop.open .modal { transform:translateY(0); }
+
+  .modal-header {
+    background:var(--green-dark); color:#fff;
+    text-align:center; padding:48px 32px 42px;
+  }
+
+  .modal-header .modal-label {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500; letter-spacing:4px;
+    text-transform:uppercase; margin-bottom:18px; opacity:0.85;
+  }
+
+  .modal-header h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px; font-weight:300; line-height:1.1;
+    text-transform:uppercase; letter-spacing:2px;
+  }
+
+  .modal-close {
+    position:absolute; top:14px; right:14px; z-index:2;
+    width:34px; height:34px; border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.45);
+    background:transparent; color:#fff; font-size:18px;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background 0.25s;
+  }
+
+  .modal-close:hover { background:rgba(255,255,255,0.15); }
+
+  .modal-body { background:#fff; padding:44px 40px 36px; text-align:center; }
+  .modal-body p { font-size:15px; line-height:1.7; color:var(--warm-gray); font-weight:300; margin-bottom:28px; }
+
+  .modal-input {
+    display:block; width:100%;
+    padding:14px 16px;
+    font-family:'Raleway',sans-serif;
+    font-size:14px; font-weight:300; color:var(--charcoal);
+    background:#fff; border:1.5px solid var(--border);
+    border-radius:0; outline:none;
+    transition:border-color 0.25s; margin-bottom:14px;
+  }
+
+  .modal-input::placeholder { color:#b0a99e; }
+  .modal-input:focus         { border-color:var(--green-dark); }
+  .modal-input.input-error   { border-color:#c0392b; }
+
+  .input-error-msg {
+    display:none; font-size:12px; color:#c0392b;
+    text-align:left; margin-top:-8px; margin-bottom:6px;
+  }
+
+  .input-error-msg.visible { display:flex; align-items:center; gap:5px; }
+
+  .input-error-msg svg { width:14px; height:14px; stroke:#c0392b; fill:none; stroke-width:2; flex-shrink:0; }
+
+  .modal-submit {
+    display:block; width:100%;
+    background:var(--green-dark); color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase;
+    padding:18px 0; border:none; cursor:pointer;
+    transition:background 0.3s; margin-top:8px;
+  }
+
+  .modal-submit:hover { background:var(--green-mid); }
+
+  .modal-privacy {
+    margin-top:28px; padding-top:20px;
+    border-top:1px solid var(--border);
+    font-size:11px; color:#a09590; text-align:center;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:720px) {
+    .meet-card-wrap { margin-top:-200px; }
+    .meet-card      { padding:60px 28px 48px; }
+    .method         { grid-template-columns:1fr; gap:36px; }
+    .cards          { grid-template-columns:1fr; max-width:400px; margin:0 auto; }
+  }
+
+
+  
+  /* added responsiveness on buttons */
+  @media (max-width: 768px) {
+  .hero-headline {
+    margin-bottom: 40px; /* reduce spacing */
+  }
+
+  .btn-outline {
+    padding: 16px 28px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-buttons {
+    flex-direction:column;
+  }
+  .hero-buttons a,
+  .hero-buttons button {
+    width:100%;
+    text-align:center;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- fixed hero bg -->
+<div class="hero"></div>
+
+<!-- ══ SCROLLING LAYER ══ -->
+<div class="scroll-wrap">
+
+  <!-- hero content -->
+  <section class="hero-content">
+    <div class="logo">
+      <div class="logo-box"><span>BH</span></div>
+      <div class="logo-name">BH Performance</div>
+    </div>
+    <h1 class="hero-headline">Unlock the best<br>version of you</h1>
+
+
+    <div class="hero-buttons">
+  <button class="btn-outline open-modal">Free Fit Consult →</button>
+  <a href="programs.html" class="btn-outline secondary-btn">View Programs →</a>
+</div>
+
+
+    <!-- <button class="btn-outline open-modal">Free Fit Consult &nbsp;→</button> -->
+
+
+
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+
+
+  </section>
+
+  
+ 
+
+  <!-- ── CREAM BODY ── -->
+  <div class="cream-body">
+    <div class="divider" style="margin-top:64px;"></div>
+
+<!-- ── MEET CARD  (negative margin creeps up over hero) ── -->
+     <div class="meet-card-wrap">
+    <div class="meet-card">
+      <img src="./images/pexels-rdne-8401124.jpg" alt="Blaise Hala" class="meet-photo"/>
+      <h2 class="meet-title">Meet Blaise Hala</h2>
+      <p class="meet-cred">Certified Personal Trainer + Nutritionist</p>
+      <p class="meet-quote">Fitness is more than just hitting the gym. It&rsquo;s about being the happiest, healthiest version of yourself. I just make it easier to get there.</p>
+      <button class="btn-filled open-modal">Free Fit Consult &nbsp;→</button>
+    </div>
+  </div>
+
+    <!-- Method -->
+    <section class="method">
+      <img src="./images/pexels-rdne-8401124.jpg" alt="Training" class="method-img"/>
+      <div class="method-text">
+        <div class="label">My Method</div>
+        <h2>A big-picture approach<br>to your well-being</h2>
+        <p>Instead of putting you on a treadmill, I look at what your end game is — where you want to be. And from there I&rsquo;ll build you a custom program, complete with nutritional guidelines, that helps you get there.
+        Sometimes that means grueling hours in the gym. Sometimes it&rsquo;s a stretching routine to improve mobility. Sometimes it&rsquo;s both.</p>
+        <p>I’ve helped people with poor nutrition improve their eating habits and take their health back. I’ve transformed people with little physical fitness into bona fide athletes. And I’ve helped experienced athletes overcome plateaus to reach new heights of performance.</p> 
+
+        <p>Everyone is different. What works well for one person may not for another. And that’s why I take a thoughtful, tailored approach to every new client.</p>
+      </div>
+
+    
+    </section>
+
+    <!-- Testimonial CTA -->
+    <section class="testimonial-cta">
+      <div class="divider"></div>
+      <button class="btn-filled open-modal">Free Fit Consult &nbsp;→</button>
+      <span class="no-obligation">Free—no obligation</span>
+    </section>
+  </div>
+
+  <!-- ── QUOTE BANNER ── -->
+  <section class="quote-banner">
+    <div class="quote-banner-inner">
+      <blockquote>&ldquo;I&rsquo;d tried so many different health trends and gyms and nothing worked for me. Blaise helped me understand why, and put me on the right path through a combination of education, instruction, and inspiration.&rdquo;</blockquote>
+      <div class="quote-attribution">
+        <span class="quote-name">Callie Fansbridge</span>
+        <span class="quote-dash">&mdash;</span>
+        <span class="quote-location">Virginia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services">
+    <div class="services-inner">
+      <div class="label">What I Offer</div>
+      <h2>Tailored Programs</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Custom Training</h3>
+          <p>Personalized workout plans designed around your fitness level, goals, and available time.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Nutrition Guidance</h3>
+          <p>Evidence-based meal strategies that fuel performance without sacrificing the foods you love.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <h3>Mindset Coaching</h3>
+          <p>Build the mental resilience and accountability frameworks that turn short-term efforts into lasting habits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARALLAX BANNER ── -->
+  <section class="parallax-banner">
+    <div class="parallax-banner-inner">
+      <h2>Ready to get started?</h2>
+      <p>Let&rsquo;s talk about your goals</p>
+      <button class="btn-outline open-modal">Free Fit Consult &nbsp;→</button>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <div class="cta-wrap">
+    <section class="cta-section">
+      <div class="label">Ready to get started?</div>
+      <h2>Let&rsquo;s talk about<br>your goals</h2>
+      <p>Hiring a coach can be a big commitment, but your health and well-being is worth it. Schedule a free FIT consultation with me to explore your goals and the best way to achieve them together.</p>
+      <button class="btn-filled open-modal">Free Fit Consult &nbsp;→</button>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>©2024 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
+
+</div><!-- end scroll-wrap -->
+
+<!-- ══ MODAL ══ -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-label">Let&rsquo;s get fit.</div>
+      <h2>Book your free<br>fit consult</h2>
+    </div>
+    <div class="modal-body">
+      <p>Shoot me your name &amp; email, and we&rsquo;ll connect to schedule your consultation.</p>
+      <input type="email" class="modal-input" id="emailInput" placeholder="Email" autocomplete="off"/>
+      <div class="input-error-msg" id="emailError">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Please enter your Email
+      </div>
+      <input type="text" class="modal-input" id="nameInput" placeholder="First Name" autocomplete="off"/>
+      <button class="modal-submit" id="submitBtn">Let&rsquo;s Connect &nbsp;→</button>
+      <div class="modal-privacy">Privacy Policy: We hate spam and promise to keep your email address safe</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JS ══ -->
+<script>
+const backdrop   = document.getElementById('modalBackdrop');
+const closeBtn   = document.getElementById('modalClose');
+const emailInput = document.getElementById('emailInput');
+const nameInput  = document.getElementById('nameInput');
+const emailError = document.getElementById('emailError');
+const submitBtn  = document.getElementById('submitBtn');
+
+function openModal(){
+  backdrop.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>emailInput.focus(),300);
+}
+
+function closeModal(){
+  backdrop.classList.remove('open');
+  document.body.style.overflow='';
+  emailInput.value='';
+  nameInput.value='';
+  emailInput.classList.remove('input-error');
+  emailError.classList.remove('visible');
+}
+
+document.querySelectorAll('.open-modal').forEach(el=>el.addEventListener('click',openModal));
+closeBtn.addEventListener('click',closeModal);
+backdrop.addEventListener('click',e=>{ if(e.target===backdrop) closeModal(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&backdrop.classList.contains('open')) closeModal(); });
+
+function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+emailInput.addEventListener('input',()=>{
+  if(isValidEmail(emailInput.value)){
+    emailInput.classList.remove('input-error');
+    emailError.classList.remove('visible');
+  }
+});
+
+submitBtn.addEventListener('click',()=>{
+  if(!isValidEmail(emailInput.value.trim())){
+    emailInput.classList.add('input-error');
+    emailError.classList.add('visible');
+    emailInput.focus();
+    return;
+  }
+  document.querySelector('.modal-body').innerHTML=
+    '<p style="margin-top:24px;font-size:18px;font-weight:500;color:#2c2c2c;font-family:\'Cormorant Garamond\',serif;">Thanks! We\'ll be in touch soon.</p>'+
+    '<p style="margin-top:8px;">Keep an eye on your inbox — we\'ll send you the next steps within 24 hours.</p>'+
+    '<button class="modal-submit" style="max-width:260px;margin:20px auto 0;" onclick="closeModal()">Close</button>';
+});
+</script>
+</body>
+</html>
