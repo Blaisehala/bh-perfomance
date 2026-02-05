@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Transformations – BH Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --green-dark:#3d5a3e;
+    --green-mid:#4a6741;
+    --cream:#f5f2ed;
+    --charcoal:#2c2c2c;
+    --warm-gray:#6b6560;
+    --border:#c8c0b8;
+  }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Raleway',sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:24px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+
+  .logo-link {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .logo-box {
+    width:40px; height:40px;
+    border:2px solid var(--green-dark);
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .logo-box span {
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px; font-weight:300; color:var(--green-dark); letter-spacing:1px;
+  }
+
+  .logo-text {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase; color:var(--charcoal);
+  }
+
+  .back-link {
+    font-family:'Raleway',sans-serif;
+    font-size:12px; font-weight:400; letter-spacing:2px;
+    text-transform:uppercase; color:var(--warm-gray);
+    text-decoration:none;
+    transition:color 0.3s;
+  }
+
+  .back-link:hover { color:var(--green-dark); }
+
+  /* ─── HERO ─── */
+  .testimonials-hero {
+    background:#fff;
+    padding:80px 24px 60px;
+    text-align:center;
+  }
+
+  .testimonials-hero .label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--green-dark); font-weight:500; margin-bottom:18px;
+  }
+
+  .testimonials-hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(42px,6vw,64px); font-weight:300;
+    text-transform:uppercase; letter-spacing:3px;
+    margin-bottom:20px; color:var(--charcoal);
+  }
+
+  .testimonials-hero p {
+    font-size:15px; line-height:1.85; color:var(--warm-gray);
+    font-weight:300; max-width:640px; margin:0 auto;
+  }
+
+  /* ─── TRANSFORMATION GRID ─── */
+  .transformations-section {
+    padding:60px 24px 100px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .transformation-card {
+    background:#fff;
+    border:1px solid var(--border);
+    margin-bottom:60px;
+    overflow:hidden;
+  }
+
+  .transformation-images {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+  }
+
+  .before-after-img {
+    position:relative;
+    width:100%;
+    aspect-ratio:3/4;
+    background:linear-gradient(160deg,#e8e5e0 0%,#d8d4ce 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .before-after-img img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .before-after-label {
+    position:absolute;
+    top:16px;
+    left:16px;
+    background:rgba(0,0,0,0.75);
+    color:#fff;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:6px 14px;
+    border-radius:2px;
+  }
+
+  .placeholder-text {
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    color:var(--warm-gray);
+    font-style:italic;
+  }
+
+  .transformation-info {
+    padding:40px 36px;
+  }
+
+  .client-name {
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px;
+    font-weight:400;
+    letter-spacing:1px;
+    margin-bottom:8px;
+    color:var(--charcoal);
+  }
+
+  .client-stats {
+    font-size:13px;
+    color:var(--green-dark);
+    font-weight:500;
+    letter-spacing:1px;
+    margin-bottom:20px;
+  }
+
+  .client-quote {
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:18px;
+    line-height:1.7;
+    color:var(--warm-gray);
+    margin-bottom:20px;
+  }
+
+  .client-details {
+    font-size:14px;
+    line-height:1.8;
+    color:var(--warm-gray);
+  }
+
+  /* ─── CTA ─── */
+  .testimonials-cta {
+    background:#fff;
+    padding:80px 24px;
+    text-align:center;
+  }
+
+  .testimonials-cta h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(34px,5vw,48px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:20px;
+    color:var(--charcoal);
+  }
+
+  .testimonials-cta p {
+    font-size:15px;
+    line-height:1.85;
+    color:var(--warm-gray);
+    font-weight:300;
+    max-width:580px;
+    margin:0 auto 36px;
+  }
+
+  .btn-filled {
+    display:inline-block;
+    background:var(--green-dark);
+    color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    padding:20px 52px;
+    border:none;
+    cursor:pointer;
+    transition:background 0.3s;
+    text-decoration:none;
+  }
+
+  .btn-filled:hover {
+    background:var(--green-mid);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:var(--cream);
+    border-top:1px solid var(--border);
+    padding:36px 24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--warm-gray);
+    letter-spacing:1px;
+  }
+
+  footer a {
+    color:var(--warm-gray);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:768px) {
+    .transformation-images {
+      grid-template-columns:1fr;
+    }
+
+    .transformation-info {
+      padding:32px 24px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="../index.html" class="logo-link">
+    <div class="logo-box"><span>BH</span></div>
+    <div class="logo-text">BH Performance</div>
+  </a>
+  <a href="../index.html" class="back-link">← Back to Home</a>
+</header>
+
+<!-- HERO -->
+<section class="testimonials-hero">
+  <div class="label">Real Results</div>
+  <h1>Client Transformations</h1>
+  <p>These are real people who trusted the process and transformed their bodies. Your story could be next.</p>
+</section>
+
+<!-- TRANSFORMATIONS -->
+<section class="transformations-section">
+
+  <!-- Transformation 1 -->
+  <div class="transformation-card">
+    <div class="transformation-images">
+      <div class="before-after-img">
+        <span class="before-after-label">Before</span>
+        <!-- Replace with: <img src="../images/client1-before.jpg" alt="Before"/> -->
+        <span class="placeholder-text">Add Before Photo</span>
+      </div>
+      <div class="before-after-img">
+        <span class="before-after-label">After</span>
+        <!-- Replace with: <img src="../images/client1-after.jpg" alt="After"/> -->
+        <span class="placeholder-text">Add After Photo</span>
+      </div>
+    </div>
+    <div class="transformation-info">
+      <h3 class="client-name">Sarah M.</h3>
+      <p class="client-stats">Lost 28 lbs | Kept Muscle | 12 Weeks on GLP-1 Program</p>
+      <p class="client-quote">"I was terrified of becoming 'skinny fat' on Ozempic. Blaise made sure I lost the weight without losing my strength. I've never felt better."</p>
+      <p class="client-details">Sarah came to me after her doctor prescribed Ozempic. She'd already lost 15 pounds but noticed her strength declining. We built a custom resistance program that preserved her muscle while the medication did its job. Result: she lost another 13 pounds of pure fat and actually got stronger.</p>
+    </div>
+  </div>
+
+  <!-- Transformation 2 -->
+  <div class="transformation-card">
+    <div class="transformation-images">
+      <div class="before-after-img">
+        <span class="before-after-label">Before</span>
+        <!-- Replace with: <img src="../images/client2-before.jpg" alt="Before"/> -->
+        <span class="placeholder-text">Add Before Photo</span>
+      </div>
+      <div class="before-after-img">
+        <span class="before-after-label">After</span>
+        <!-- Replace with: <img src="../images/client2-after.jpg" alt="After"/> -->
+        <span class="placeholder-text">Add After Photo</span>
+      </div>
+    </div>
+    <div class="transformation-info">
+      <h3 class="client-name">Marcus T.</h3>
+      <p class="client-stats">Fixed Chronic Back Pain | Gained 8 lbs Muscle | 12 Weeks Desk Warrior Program</p>
+      <p class="client-quote">"Three years of back pain gone in a month. I thought I'd have to live with it forever. Now I'm pain-free and stronger than I've been in years."</p>
+      <p class="client-details">Marcus sat 10+ hours a day and had given up on ever being pain-free. The Desk Warrior program fixed his posture, strengthened his core, and eliminated his pain completely. He's now lifting heavier than he did in college.</p>
+    </div>
+  </div>
+
+  <!-- Transformation 3 -->
+  <div class="transformation-card">
+    <div class="transformation-images">
+      <div class="before-after-img">
+        <span class="before-after-label">Before</span>
+        <!-- Replace with: <img src="../images/client3-before.jpg" alt="Before"/> -->
+        <span class="placeholder-text">Add Before Photo</span>
+      </div>
+      <div class="before-after-img">
+        <span class="before-after-label">After</span>
+        <!-- Replace with: <img src="../images/client3-after.jpg" alt="After"/> -->
+        <span class="placeholder-text">Add After Photo</span>
+      </div>
+    </div>
+    <div class="transformation-info">
+      <h3 class="client-name">Derek W.</h3>
+      <p class="client-stats">Lost 18 lbs | Dad of 3 | 8 Weeks Busy Dad Program</p>
+      <p class="client-quote">"Finally a program that worked with my life instead of against it. 20 minutes a day and real results. Game changer."</p>
+      <p class="client-details">Derek had zero time between work and three kids. The Busy Dad program gave him efficient workouts that fit his schedule. No gym needed. Just results that showed up week after week.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="testimonials-cta">
+  <h2>Your Turn</h2>
+  <p>These transformations didn't happen by accident. They happened because real people trusted the process and did the work. Ready to write your own story?</p>
+  <a href="programs.html" class="btn-filled">View Programs →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>©2026 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
+
+</body>
+</html>

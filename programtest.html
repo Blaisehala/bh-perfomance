@@ -273,147 +273,6 @@
     background:var(--green-mid);
   }
 
-  .launch-badge {
-    display:inline-block;
-    background:#f0ede8;
-    color:var(--warm-gray);
-    font-size:10px;
-    font-weight:500;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    padding:4px 12px;
-    border-radius:12px;
-    margin-bottom:8px;
-  }
-
-  /* ─── WAITLIST MODAL ─── */
-  .waitlist-modal {
-    position:fixed;
-    inset:0;
-    z-index:1000;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(4px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-  }
-
-  .waitlist-modal.active {
-    display:flex;
-  }
-
-  .waitlist-modal-content {
-    background:#fff;
-    max-width:520px;
-    width:100%;
-    border-radius:4px;
-    overflow:hidden;
-    position:relative;
-  }
-
-  .waitlist-header {
-    background:var(--green-dark);
-    color:#fff;
-    padding:40px 32px;
-    text-align:center;
-  }
-
-  .waitlist-header h2 {
-    font-family:'Cormorant Garamond',serif;
-    font-size:36px;
-    font-weight:300;
-    text-transform:uppercase;
-    letter-spacing:2px;
-    margin-bottom:8px;
-  }
-
-  .waitlist-header p {
-    font-size:14px;
-    opacity:0.85;
-  }
-
-  .waitlist-body {
-    padding:36px 32px;
-  }
-
-  .waitlist-body label {
-    display:block;
-    font-size:12px;
-    font-weight:500;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:var(--charcoal);
-    margin-bottom:8px;
-  }
-
-  .waitlist-body input,
-  .waitlist-body select {
-    width:100%;
-    padding:12px 14px;
-    border:1.5px solid var(--border);
-    font-family:'Raleway',sans-serif;
-    font-size:14px;
-    margin-bottom:16px;
-    outline:none;
-    transition:border-color 0.3s;
-  }
-
-  .waitlist-body input:focus,
-  .waitlist-body select:focus {
-    border-color:var(--green-dark);
-  }
-
-  .waitlist-submit {
-    width:100%;
-    background:var(--green-dark);
-    color:#fff;
-    font-family:'Raleway',sans-serif;
-    font-size:13px;
-    font-weight:500;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    padding:16px;
-    border:none;
-    cursor:pointer;
-    transition:background 0.3s;
-  }
-
-  .waitlist-submit:hover {
-    background:var(--green-mid);
-  }
-
-  .waitlist-close {
-    position:absolute;
-    top:14px;
-    right:14px;
-    width:32px;
-    height:32px;
-    border-radius:50%;
-    border:1.5px solid rgba(255,255,255,0.4);
-    background:transparent;
-    color:#fff;
-    font-size:18px;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:background 0.3s;
-  }
-
-  .waitlist-close:hover {
-    background:rgba(255,255,255,0.15);
-  }
-
-  .waitlist-note {
-    margin-top:20px;
-    padding-top:20px;
-    border-top:1px solid var(--border);
-    font-size:11px;
-    color:var(--warm-gray);
-    text-align:center;
-  }
-
   /* ─── FOOTER ─── */
   footer {
     background:#fff;
@@ -477,7 +336,6 @@
     <div class="program-card featured-card">
       <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=70" alt="GLP-1 Training" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category featured-badge">⭐ Featured | GLP-1 Specialist</div>
         <h2 class="program-title">GLP-1 Muscle Preservation Program</h2>
         <p class="program-desc">The only program designed specifically for Ozempic, Wegovy, and Mounjaro users. Lose the weight without losing your muscle. Certified GLP-1 strength training that protects your lean mass while the medication does its job.</p>
@@ -494,7 +352,7 @@
           <div class="program-price">$497</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="glp1-muscle">Join Waitlist →</button>
+        <button class="btn-buy" data-program="glp1-muscle">Buy Now →</button>
       </div>
     </div>
 
@@ -502,7 +360,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1593177232526-718e04eddaa1?w=600&q=70" alt="Desk Warrior" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Desk Workers</div>
         <h2 class="program-title">Desk Warrior: 12-Week Back Pain Fix</h2>
         <p class="program-desc">Fix chronic back pain from sitting 8+ hours. Progressive mobility, strength, and posture correction built for office and remote workers.</p>
@@ -518,7 +375,7 @@
           <div class="program-price">$297</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="desk-warrior">Join Waitlist →</button>
+        <button class="btn-buy" data-program="desk-warrior">Buy Now →</button>
       </div>
     </div>
 
@@ -526,7 +383,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1552058264-315e568980d4?w=600&q=70" alt="Busy Dad" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Busy Professionals</div>
         <h2 class="program-title">Busy Dad Body Recomp</h2>
         <p class="program-desc">20-minute at-home workouts for dads with zero free time. No gym. No excuses. Real results that fit your life.</p>
@@ -542,7 +398,7 @@
           <div class="program-price">$197</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="busy-dad">Join Waitlist →</button>
+        <button class="btn-buy" data-program="busy-dad">Buy Now →</button>
       </div>
     </div>
 
@@ -550,7 +406,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=70" alt="Tech Wellness" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Tech Workers</div>
         <h2 class="program-title">Tech Industry Wellness Reset</h2>
         <p class="program-desc">Built for devs and remote workers. Fixes posture, boosts energy, and undoes the damage of 12-hour coding marathons.</p>
@@ -566,7 +421,7 @@
           <div class="program-price">$497</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="tech-wellness">Join Waitlist →</button>
+        <button class="btn-buy" data-program="tech-wellness">Buy Now →</button>
       </div>
     </div>
 
@@ -574,7 +429,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=70" alt="Runner's Knee" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Injury Prevention</div>
         <h2 class="program-title">Runner's Knee Recovery Program</h2>
         <p class="program-desc">Eliminate knee pain and get back to running. A rehab-focused program built around prehab principles, not just rest.</p>
@@ -590,7 +444,7 @@
           <div class="program-price">$147</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="runners-knee">Join Waitlist →</button>
+        <button class="btn-buy" data-program="runners-knee">Buy Now →</button>
       </div>
     </div>
 
@@ -598,7 +452,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1506878206813-92eb64d6e4fb?w=600&q=70" alt="Morning Reset" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Daily Routines</div>
         <h2 class="program-title">The 20-Min Morning Reset</h2>
         <p class="program-desc">Start every day with energy and momentum. A simple repeatable morning routine that takes less than 20 minutes.</p>
@@ -614,7 +467,7 @@
           <div class="program-price">$97</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="morning-reset">Join Waitlist →</button>
+        <button class="btn-buy" data-program="morning-reset">Buy Now →</button>
       </div>
     </div>
 
@@ -622,7 +475,6 @@
     <div class="program-card">
       <img src="https://images.unsplash.com/photo-1571945727116-59eaa4e8304d?w=600&q=70" alt="Posture Fix" class="program-image"/>
       <div class="program-body">
-        <span class="launch-badge">Launching Spring 2025</span>
         <div class="program-category">Desk Workers</div>
         <h2 class="program-title">Total Posture Overhaul</h2>
         <p class="program-desc">Fix rounded shoulders, forward head posture, and tight hips. A full-body correction system for anyone who sits for a living.</p>
@@ -638,7 +490,7 @@
           <div class="program-price">$197</div>
           <span class="program-price-label">one-time payment</span>
         </div>
-        <button class="btn-buy" data-program="posture-fix">Join Waitlist →</button>
+        <button class="btn-buy" data-program="posture-fix">Buy Now →</button>
       </div>
     </div>
 
@@ -648,119 +500,14 @@
 <!-- FOOTER -->
 <footer>©2024 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
 
-<!-- WAITLIST MODAL -->
-<div class="waitlist-modal" id="waitlistModal">
-  <div class="waitlist-modal-content">
-    <div class="waitlist-header">
-      <button class="waitlist-close" id="closeWaitlist">&times;</button>
-      <h2>Join the Waitlist</h2>
-      <p>Be the first to know when programs launch</p>
-    </div>
-    <div class="waitlist-body">
-      <form id="waitlistForm">
-        <label for="waitlistName">Name</label>
-        <input type="text" id="waitlistName" placeholder="Your name" required>
-
-        <label for="waitlistEmail">Email</label>
-        <input type="email" id="waitlistEmail" placeholder="your@email.com" required>
-
-        <label for="waitlistProgram">Which program interests you?</label>
-        <select id="waitlistProgram" required>
-          <option value="">Select a program...</option>
-          <option value="glp1-muscle">GLP-1 Muscle Preservation</option>
-          <option value="desk-warrior">Desk Warrior: Back Pain Fix</option>
-          <option value="busy-dad">Busy Dad Body Recomp</option>
-          <option value="tech-wellness">Tech Industry Wellness Reset</option>
-          <option value="runners-knee">Runner's Knee Recovery</option>
-          <option value="morning-reset">20-Min Morning Reset</option>
-          <option value="posture-fix">Total Posture Overhaul</option>
-        </select>
-
-        <button type="submit" class="waitlist-submit">Join Waitlist →</button>
-
-        <div class="waitlist-note">
-          We'll email you when your program launches. Unsubscribe anytime.
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- WAITLIST SCRIPT -->
+<!-- STRIPE PLACEHOLDER (we'll wire this next) -->
 <script>
-const waitlistModal = document.getElementById('waitlistModal');
-const closeWaitlist = document.getElementById('closeWaitlist');
-const waitlistForm = document.getElementById('waitlistForm');
-const programSelect = document.getElementById('waitlistProgram');
-
-// Open modal when any "Join Waitlist" button clicked
+// Stripe will go here
 document.querySelectorAll('.btn-buy').forEach(btn => {
   btn.addEventListener('click', function() {
     const programId = this.dataset.program;
-    programSelect.value = programId;
-    waitlistModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    alert(`Stripe checkout for: ${programId}\n\nWe'll wire this up next!`);
   });
-});
-
-// Close modal
-closeWaitlist.addEventListener('click', () => {
-  waitlistModal.classList.remove('active');
-  document.body.style.overflow = '';
-});
-
-// Close on backdrop click
-waitlistModal.addEventListener('click', (e) => {
-  if (e.target === waitlistModal) {
-    waitlistModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-});
-
-// Handle form submission
-waitlistForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  
-  const name = document.getElementById('waitlistName').value;
-  const email = document.getElementById('waitlistEmail').value;
-  const program = programSelect.value;
-
-  // Disable submit button during submission
-  const submitBtn = waitlistForm.querySelector('.waitlist-submit');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Joining...';
-
-  try {
-    // Send to Formspree
-    // REPLACE 'YOUR_FORM_ID' with your actual Formspree form ID
-    const response = await fetch('https://formspree.io/f/mjgebyoe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        program: program,
-        _subject: `New Waitlist Signup: ${program}`
-      })
-    });
-
-    if (response.ok) {
-      // Show success message
-      document.querySelector('.waitlist-body').innerHTML = `
-        <div style="text-align:center; padding:40px 20px;">
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; margin-bottom:16px;">You're on the list!</h3>
-          <p style="color:var(--warm-gray); margin-bottom:24px;">We'll email you when the program launches.</p>
-          <button onclick="location.reload()" class="waitlist-submit">Close</button>
-        </div>
-      `;
-    } else {
-      throw new Error('Submission failed');
-    }
-  } catch (error) {
-    alert('Something went wrong. Please try again or email us directly.');
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Join Waitlist →';
-  }
 });
 </script>
 

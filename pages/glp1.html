@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GLP-1 Strength Training – BH Performance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --green-dark:#3d5a3e;
+    --green-mid:#4a6741;
+    --cream:#f5f2ed;
+    --charcoal:#2c2c2c;
+    --warm-gray:#6b6560;
+    --border:#c8c0b8;
+  }
+
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'Raleway',sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:24px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+
+  .logo-link {
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .logo-box {
+    width:40px; height:40px;
+    border:2px solid var(--green-dark);
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .logo-box span {
+    font-family:'Cormorant Garamond',serif;
+    font-size:18px; font-weight:300; color:var(--green-dark); letter-spacing:1px;
+  }
+
+  .logo-text {
+    font-family:'Raleway',sans-serif;
+    font-size:11px; font-weight:500; letter-spacing:3px;
+    text-transform:uppercase; color:var(--charcoal);
+  }
+
+  .back-link {
+    font-family:'Raleway',sans-serif;
+    font-size:12px; font-weight:400; letter-spacing:2px;
+    text-transform:uppercase; color:var(--warm-gray);
+    text-decoration:none;
+    transition:color 0.3s;
+  }
+
+  .back-link:hover { color:var(--green-dark); }
+
+  /* ─── HERO ─── */
+  .glp1-hero {
+    background:linear-gradient(135deg, #2a3828 0%, #3d5a3e 100%);
+    color:#fff;
+    padding:100px 24px 80px;
+    text-align:center;
+  }
+
+  .glp1-hero .badge {
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    padding:6px 18px;
+    border-radius:50px;
+    margin-bottom:20px;
+  }
+
+  .glp1-hero h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(42px,7vw,72px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    margin-bottom:20px;
+    line-height:1.1;
+  }
+
+  .glp1-hero p {
+    font-size:16px;
+    line-height:1.8;
+    color:rgba(255,255,255,0.85);
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  /* ─── PROBLEM SECTION ─── */
+  .problem-section {
+    background:#fff;
+    padding:100px 24px;
+  }
+
+  .problem-inner {
+    max-width:880px;
+    margin:0 auto;
+  }
+
+  .problem-inner .label {
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--green-dark);
+    font-weight:500;
+    margin-bottom:18px;
+    text-align:center;
+  }
+
+  .problem-inner h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(36px,5vw,52px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:32px;
+    color:var(--charcoal);
+    text-align:center;
+  }
+
+  .problem-inner p {
+    font-size:15px;
+    line-height:1.9;
+    color:var(--warm-gray);
+    font-weight:300;
+    margin-bottom:20px;
+  }
+
+  .problem-list {
+    list-style:none;
+    margin:36px 0;
+    padding:0;
+  }
+
+  .problem-list li {
+    font-size:15px;
+    color:var(--warm-gray);
+    padding:14px 0;
+    border-bottom:1px solid #f0ede8;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .problem-list li::before {
+    content:'✗';
+    color:#c0392b;
+    font-weight:700;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  /* ─── SOLUTION SECTION ─── */
+  .solution-section {
+    background:#eae7e1;
+    padding:100px 24px;
+  }
+
+  .solution-inner {
+    max-width:880px;
+    margin:0 auto;
+  }
+
+  .solution-inner .label {
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--green-dark);
+    font-weight:500;
+    margin-bottom:18px;
+    text-align:center;
+  }
+
+  .solution-inner h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(36px,5vw,52px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:32px;
+    color:var(--charcoal);
+    text-align:center;
+  }
+
+  .solution-list {
+    list-style:none;
+    margin:36px 0;
+    padding:0;
+  }
+
+  .solution-list li {
+    font-size:15px;
+    color:var(--warm-gray);
+    padding:14px 0;
+    border-bottom:1px solid #d8d4ce;
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .solution-list li::before {
+    content:'✓';
+    color:var(--green-dark);
+    font-weight:700;
+    flex-shrink:0;
+    margin-top:2px;
+  }
+
+  /* ─── CREDENTIALS ─── */
+  .credentials-section {
+    background:#fff;
+    padding:100px 24px;
+    text-align:center;
+  }
+
+  .credentials-inner {
+    max-width:720px;
+    margin:0 auto;
+  }
+
+  .credentials-inner .label {
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--green-dark);
+    font-weight:500;
+    margin-bottom:18px;
+  }
+
+  .credentials-inner h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(34px,5vw,48px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:28px;
+    color:var(--charcoal);
+  }
+
+  .credentials-inner p {
+    font-size:15px;
+    line-height:1.9;
+    color:var(--warm-gray);
+    font-weight:300;
+    margin-bottom:40px;
+  }
+
+  .cert-badges {
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+    margin-bottom:48px;
+  }
+
+  .cert-badge {
+    background:var(--cream);
+    border:1px solid var(--border);
+    padding:12px 24px;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:1px;
+    color:var(--charcoal);
+  }
+
+  /* ─── CTA SECTION ─── */
+  .glp1-cta {
+    background:linear-gradient(135deg, #2a3828 0%, #3d5a3e 100%);
+    color:#fff;
+    padding:100px 24px;
+    text-align:center;
+  }
+
+  .glp1-cta h2 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(36px,6vw,58px);
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:20px;
+  }
+
+  .glp1-cta p {
+    font-size:16px;
+    line-height:1.8;
+    color:rgba(255,255,255,0.85);
+    max-width:680px;
+    margin:0 auto 40px;
+  }
+
+  .btn-filled-white {
+    display:inline-block;
+    background:#fff;
+    color:var(--green-dark);
+    font-family:'Raleway',sans-serif;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:20px 48px;
+    border:none;
+    cursor:pointer;
+    transition:transform 0.2s, box-shadow 0.2s;
+    text-decoration:none;
+    margin-right:14px;
+    margin-bottom:14px;
+  }
+
+  .btn-filled-white:hover {
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+  }
+
+  .btn-outline-white {
+    display:inline-block;
+    border:1.5px solid rgba(255,255,255,0.8);
+    color:#fff;
+    font-family:'Raleway',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:20px 48px;
+    background:transparent;
+    transition:background 0.3s;
+    cursor:pointer;
+    text-decoration:none;
+    margin-bottom:14px;
+  }
+
+  .btn-outline-white:hover {
+    background:rgba(255,255,255,0.12);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:var(--cream);
+    border-top:1px solid var(--border);
+    padding:36px 24px;
+    text-align:center;
+    font-size:12px;
+    color:var(--warm-gray);
+    letter-spacing:1px;
+  }
+
+  footer a {
+    color:var(--warm-gray);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width:640px) {
+    .cert-badges {
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .cert-badge {
+      width:100%;
+      max-width:280px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="../index.html" class="logo-link">
+    <div class="logo-box"><span>BH</span></div>
+    <div class="logo-text">BH Performance</div>
+  </a>
+  <a href="../index.html" class="back-link">← Back to Home</a>
+</header>
+
+<!-- HERO -->
+<section class="glp1-hero">
+  <div class="badge">GLP-1 Certified Specialist</div>
+  <h1>Don't Lose Your Muscle<br>While You Lose Weight</h1>
+  <p>GLP-1 medications work—but without proper strength training, you'll lose muscle along with the fat. I'm here to make sure you keep your strength.</p>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-section">
+  <div class="problem-inner">
+    <div class="label">The Problem</div>
+    <h2>What Your Doctor<br>Isn't Telling You</h2>
+    <p>Ozempic, Wegovy, Mounjaro—these GLP-1 medications are transforming weight loss. But there's a hidden problem most doctors don't warn you about:</p>
+    <p><strong>You're not just losing fat. You're losing muscle.</strong></p>
+    <p>Without targeted strength training, GLP-1 users can lose up to 40% of their total weight loss from muscle mass. That means:</p>
+    
+    <ul class="problem-list">
+      <li>Your metabolism slows down (making it easier to gain weight back)</li>
+      <li>You lose strength and energy</li>
+      <li>Your body composition stays poor ("skinny fat" syndrome)</li>
+      <li>You're at higher risk for bone density loss</li>
+      <li>Your long-term health suffers</li>
+    </ul>
+
+    <p>The medication does its job—but if you're not training the right way, you're sabotaging your results.</p>
+  </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="solution-section">
+  <div class="solution-inner">
+    <div class="label">The Solution</div>
+    <h2>GLP-1 Strength Training<br>That Actually Works</h2>
+    <p>I'm a certified GLP-1 strength specialist. I help people on Ozempic, Wegovy, and Mounjaro keep their muscle while the weight comes off.</p>
+    <p>My approach is built specifically for GLP-1 users:</p>
+
+    <ul class="solution-list">
+      <li><strong>Progressive resistance training</strong> designed to preserve and build lean muscle</li>
+      <li><strong>Nutrition protocols</strong> that support muscle retention during rapid weight loss</li>
+      <li><strong>Recovery strategies</strong> tailored to your medication and energy levels</li>
+      <li><strong>Body composition tracking</strong> to ensure you're losing fat, not muscle</li>
+      <li><strong>Sustainable habits</strong> that keep the weight off long-term</li>
+    </ul>
+
+    <p>This isn't generic gym programming. This is specialized training for people on GLP-1 medications who want to transform their bodies the right way.</p>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials-section">
+  <div class="credentials-inner">
+    <div class="label">Credentials</div>
+    <h2>Why Trust Me?</h2>
+    <p>I'm one of the few trainers in the country with specialized certification in GLP-1 strength training. I've worked with dozens of clients on these medications and helped them transform their bodies while keeping their strength.</p>
+
+    <div class="cert-badges">
+      <div class="cert-badge">GLP-1 Certified Strength Coach</div>
+      <div class="cert-badge">Certified Personal Trainer</div>
+      <div class="cert-badge">Nutrition Specialist</div>
+    </div>
+
+    <p>I don't just hand you a workout plan and wish you luck. I monitor your progress, adjust your training as your body changes, and make sure you're getting results that last.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="glp1-cta">
+  <h2>Ready to Do This Right?</h2>
+  <p>If you're on a GLP-1 medication and want to make sure you're losing fat—not muscle—let's talk. I'll show you exactly how my program works and whether it's the right fit for you.</p>
+  <a href="programs.html" class="btn-filled-white">View GLP-1 Program →</a>
+  <a href="testimonials.html" class="btn-outline-white">See Transformations →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>©2026 BH Performance. All rights reserved. &nbsp; <a href="#">Privacy Policy</a></footer>
+
+</body>
+</html>
